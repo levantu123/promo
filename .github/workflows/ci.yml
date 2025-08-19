@@ -5,9 +5,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '21'
-      - name: Test (H2)
-        run: mvn -Dspring.profiles.active=h2 -B test
+          cache: maven
+
+      - name: Run tests on H2
+        run: mvn -B test
