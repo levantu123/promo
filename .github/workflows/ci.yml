@@ -7,7 +7,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
         with:
-          distribution: oracle
+          distribution: temurin
           java-version: '21'
+          cache: maven
       - name: Test (H2)
         run: mvn -Dspring.profiles.active=h2 -B test
