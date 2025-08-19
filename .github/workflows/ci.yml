@@ -11,5 +11,7 @@ jobs:
           java-version: '21'
           cache: maven
       - run: java -version && mvn -v
+      - name: Build
+        run: mvn -B clean install
       - name: Test (H2)
         run: mvn -Dspring.profiles.active=h2 -B test
