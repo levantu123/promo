@@ -3,6 +3,8 @@ package com.antulev.promo.promo;
 import com.antulev.promo.model.BasketItem;
 import com.antulev.promo.model.Deal;
 import com.antulev.promo.repository.DealRepository;
+import com.antulev.promo.specification.DealSpecifications;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -13,8 +15,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-import static com.antulev.promo.specification.DealSpecifications.activeAt;
-import static com.antulev.promo.specification.DealSpecifications.isActive;
 
 @Service
 @RequiredArgsConstructor
@@ -28,8 +28,8 @@ public class PromotionEngine {
         if (items == null || items.isEmpty()) return List.of();
 
         Specification<Deal> spec = Specification.allOf(
-                isActive(true),
-                activeAt(now)
+                DealSpecifications.isActive(true),
+                DealSpecifications.activeAt(now)
         );
         List<Deal> deals = dealRepository.findAll(spec);
 
