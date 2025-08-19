@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: promo
+      POSTGRES_USER: promo
+      POSTGRES_PASSWORD: promo
+    ports: ["5432:5432"]
+  api:
+    build: .
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/promo
+      SPRING_DATASOURCE_USERNAME: promo
+      SPRING_DATASOURCE_PASSWORD: promo
+    ports: ["8080:8080"]
+    depends_on: [db]
