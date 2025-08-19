@@ -184,18 +184,3 @@ com.antulev.promo
 mvn -DskipTests package
 java -jar target/promo-0.0.1-SNAPSHOT.jar --spring.profiles.active=h2
 ```
-
----
-
-## 🔗 Public repository
-
-Push this project to a public git host (GitHub preferred) and share the link:
-
-```bash
-git init
-git add .
-git commit -m "promo: initial implementation with tests"
-git branch -M main
-git remote add origin https://github.com/levantu123/promo.git
-git push -u origin main
-```
